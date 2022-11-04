@@ -1,0 +1,104 @@
+scripts to install Docker
+$ curl -fsSL https://get.docker.com -o get-docker.sh 
+$ sudo sh get-docker.sh
+
+Basic Docker Commands: 
+
+Check the version of Docker installed
+$ docker  --version
+
+Run docker image
+# docker run docker/whalesay cowsay Hi
+
+Check all pulled images 
+# docker images
+
+Pull the sample images
+# docker pull docker/whalesay
+
+Check all running container
+# docker ps // note the container id 
+# docker ps -a //previously ran containers
+
+Pulling the created webapp project: 
+#docker pull <bushsk/ngnix_webapp:v1>
+
+Running the pulled image
+-i : Keep STDIN open even if not attached 
+-t: Allocate a pseudo-TTY 
+-d: Run container in background and print container ID 
+-p: Publish a container's port(s) to the host 
+--name : used to name the container
+#Docker run -itd -p 8980:80 --name myngnixwebapp bushsk/ngnix_webapp:v1
+
+Running or testing webapp on port 8980
+
+Creating a new image from the running containers: 
+Pull the Ubuntu as a base image : 
+# docker pull ubuntu:focal 
+# docker images
+
+Run the Ubuntu image with a command in a container: Getting a bash in Ubuntu 
+# docker run -it ubuntu:focal bash 
+# docker ps
+
+Create an Apache Server and host index.html in the Containers
+# apt update
+# apt install apache2
+# cd /var/www/html 
+# mv index.html index.backup 
+# ls
+# apt install nano
+# nano index.html
+# service apache2 restart
+# service apache2 status
+
+Committing an image: 
+Open a new terminal
+# docker tag 817578334b4d asmisawant/ubuntu_apache:v1
+# docker images 
+# docker ps
+
+Checking its size and committing an image
+#docker images
+# docker commit 7e4fb89c935 asmisawant/ubuntu_apache:v1
+
+checking its size 
+#docker image
+
+Allowing Port 8888
+ufw allow 8888
+
+Running an image named image Ubuntu_apache:v1 image and note container id
+#docker run -itd -p 8888:80 - -name mywebsite asmisawant/ubuntu_apache:v1
+# docker ps
+
+Restarting an apache by attaching it into running container using container id 
+# docker exec -it eb93720ee82c service apache2 restart
+
+Get the IP address of your system
+# ifconfig
+
+Test your web server on 8888
+
+Login in hub 
+# docker login
+
+Pushing the image on Docker Hub
+# docker push asmisawant/ubuntu_apache:v1
+
+Stopping and removing containers using container id
+# docker stop <container ID>
+
+check the webserver
+# docker ps -a
+# docker rm 15f2f88aa403
+# docker ps -a
+
+Remove multiple containers using container ids
+# docker rm cd49748e1236 ef9b742b00cd
+# docker ps -a
+
+Deleting the image 
+# docker images 
+# docker rmi 6b362a9f73eb
