@@ -23,3 +23,76 @@ bat 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\PipelineAsmi\\webapp\\t
 }
 }
 }
+
+1)	Normal python program 
+write the code in notepad
+then save
+run in cmd 
+give path in execute windows batch command 
+
+2)	Python using git hub 
+save in some public repository 
+copy the url
+source code management mai select git 
+past the url
+execute window batch command 
+python filename.py
+build now 
+configure
+
+3)	Java parameter using git 
+This project is parameterized 
+add 2 parameters
+javac filename.java 
+java file name %a% %b%
+build now 
+configure
+
+4)	Maven with git
+select maven project 
+git hub url
+Build : Goals and option : clean compile package
+build now 
+configure
+
+5)	Maven in 5 minutes 
+mvn –version
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+cd my-app
+mvn package
+java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+Hello World!
+mvn clean dependency:copy-dependencies package
+mvn site
+
+6)	Pipeline 
+select pipline project 
+in script 
+go to manage jenking:global tool config : maven installation put the same name in the script 
+change git link 
+after workspace give name of the file you have given 
+give tomcat url link after that
+build now 
+Go to tomcat > bin > window batch file :startup
+go to tomcat > config >server >port no 
+localhost:8080/webapp/
+
+7)	Node job (master slave)
+manage Jenkins > manage nodes and clouds >new node
+programfiles> Jenkins 
+make a new folder SlaveNodeAsmi
+copy the path 
+paste in remote root directory 
+put label 
+select use web socket 
+go to status 
+download agent.jar 
+open cmd 
+copy the whole link put in cmd 
+go on dashboard
+create nodefile
+config
+restrict where this project runs > put label name 
+echo “Node Asmi is running”
+build now 
+configure 
