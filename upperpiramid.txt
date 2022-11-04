@@ -1,0 +1,37 @@
+Creating an image using docker file script
+$ mkdir dockertut
+cd dockertut
+pwd
+nano index.html
+<html>
+<title>First Page </title>
+<body bgcolor="blue"> Name : Asmi Sawant </br> PRN :120A3001 </br>
+creating new file
+</body>
+</html>
+$ ls
+
+Using nano editor write the script in Dockerfile
+$ nano Dockerfile
+FROM ubuntu:focal 
+MAINTAINER "ASMI" 
+RUN apt update -y 
+RUN apt install nginx -y 
+EXPOSE 80 
+COPY index.html /var/www/html/index.html 
+CMD ["nginx", "-g", "daemon off;"]
+
+# docker build -t siesnginxservers .
+# docker run -itd -p 8989:80 siesnginxservers
+
+check on the server
+
+# sudo su
+# hostnamectl set-hostname puppet-master
+#hodtname
+#exit
+#ifconfig
+# echo $(hostname -I) $(hostname)
+#nano /etc/hosts
+# apt-get update && apt-get upgrade -y
+# apt install puppetmaster -y
