@@ -1,0 +1,91 @@
+Setting up local repository 
+$ git –version
+$git init (creates a new Git repository)
+$git status
+$ls
+Setting user configuration
+$git config –global user.name “Asmi”
+$git config –global user.email “asmisit120@gst.sies.edu.in”
+$git config –global --list
+
+Adding files to git and committing 
+$touch File 1
+$git status
+$ touch file2 file3
+$ls
+$git status 
+
+Adding file to staging area
+$ cat >> file1.txt
+hello!!! This is experiment 
+$git add file1.txt
+$git status
+$git add . (add all files together)
+$git status
+
+Committing changes and detecting changed files take all of the changes that have been made locally and push them up to a remote repository
+$git commit -m file.txt
+$git commit -m “First commit on file1” file1.txt
+$git log (is a utility tool to review and read a history of everything that happens to a repository)
+$ git log --oneline (used to display the output as one commit per line)
+
+Adding remote repository
+$git branch -M main
+$ git remote add origin <github link>
+$ git remote show origin
+
+Pushing to the remote repository
+$ git push -f origin main
+
+Fetching GIT 
+$ git fetch origin
+
+Pulling changes from remote repositories
+$ git pull <github link>
+
+Git branch create and checkout a branch
+$ git log --oneline --graph (The --graph flag enables you to view your git log as a graph)
+$ git branch Asmi
+$ git checkout Asmi 
+$ git branch 
+$git log --oneline --graph
+
+Git commit from new branch
+$ cat >> file2.txt
+$ git status
+$ git add file2.txt
+$ git status
+$ git commit -m “commit from new branch” file2.txt
+
+Merge with merge commit 
+$ git checkout main
+$ cat file2.txt
+$ git merge Asmi
+$ git merge --no-ff Asmi (The --no-ff option will create a merge commit, resulting in a non-linear history)
+$ cat file2.txt
+I am trying --no-ff command to commit
+
+Merge Conflict : The master branch and the Asmi branch have modified the same hunk of fileA.txt in different ways
+$ git checkout Asmi
+$cat > file3.txt
+$ git add file3.txt
+$ git status
+$ git commit -m “trying merge conflict” file3.txt
+$ git checkout main 
+$cat>> file3.txt
+$ git add file3.txt
+$git commit -m “main branch merge conflict” file3.txt
+$ git merge Asmi
+$ cat file3.txt
+
+Solving merge conflict 
+change the file3 to normal form directly from note pad
+$ git add file3.txt
+$ git commit -m “Merge conflict is solved”
+$ git merge Asmi
+$ cat file3.txt
+$git log --oneline –graph
+Delete a branch in git
+git branch --delete <branchname>
+Rename a branch in git 
+git branch -m old-name new-name
